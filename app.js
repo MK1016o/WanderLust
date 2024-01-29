@@ -92,14 +92,13 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter)
 app.get("/search", async (req, res) => {
     let location = req.query;
-    let listing = await Listing.find({location: location.value});
-    let id = listing[0]._id;
-    listing = await Listing.findById(id).populate({ 
+    let listing = await Listing.find({location: location.value}).populate({ 
         path: "reviews", 
         populate: {
             path: "author"
         } })
     .populate("owner");
+    listing = listing[0];
     if(!listing) {
         req.flash("error", "Listing you requested for does not exist!");
         res.redirect("/listings");
