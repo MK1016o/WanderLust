@@ -100,7 +100,7 @@ app.get("/search", async (req, res) => {
     .populate("owner");
     listing = listing[0];
     if(!listing) {
-        req.flash("error", "Listing you requested for does not exist!");
+        req.flash("error", "Sorry, location you searched doesn't exist!");
         res.redirect("/listings");
     }
     res.render("listings/show.ejs", { listing })
