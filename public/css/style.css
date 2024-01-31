@@ -43,8 +43,14 @@ body {
 #filters {
     display: flex;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow: scroll;
     align-items: center;
+}
+#filters::-webkit-scrollbar {
+    height: 3px;
+}
+#filters::-webkit-scrollbar-thumb {
+  background: #888; 
 }
 .filter {
     text-align: center;
