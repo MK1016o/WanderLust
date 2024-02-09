@@ -102,6 +102,7 @@ app.get("/search", async (req, res) => {
     if(!listing) {
         req.flash("error", "Sorry, location you searched doesn't exist!");
         res.redirect("/listings");
+        return;
     }
     res.render("listings/show.ejs", { listing })
 })
